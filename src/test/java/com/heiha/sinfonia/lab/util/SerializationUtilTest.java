@@ -23,7 +23,10 @@ public class SerializationUtilTest {
         List<String> list = new ArrayList<>();
         list.add("Hello World");
         list.add("Ni hao");
-        TestPojo test = TestPojo.builder().test1("test1").test2(2).test3(list).build();
+        TestPojo test = TestPojo.builder().test1("test1").test2(2).test3(list)
+                .test4(4)
+                .test5(5)
+                .build();
         SerializationUtil.serialize(test, path);
         System.out.println(objectMapper.writeValueAsString(SerializationUtil.deserialize(path)));
     }

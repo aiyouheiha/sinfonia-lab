@@ -20,4 +20,6 @@ public class TestPojo implements Serializable {
     private transient String test1;
     private Integer test2;
     private List<String> test3;
+    private int test4;
+    private transient int test5;
 }
