@@ -1,6 +1,7 @@
 package com.heiha.sinfonia.lab.controller;
 
 import com.heiha.sinfonia.lab.util.MD5Util;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,5 +29,13 @@ public class LabController {
     public ResponseEntity<String> upload(@RequestBody MultipartFile multipartFile)
             throws IOException, NoSuchAlgorithmException {
         return ResponseEntity.ok(MD5Util.digest(multipartFile.getBytes()));
+    }
+
+    @GetMapping(value = "/domain/{domain:.+}",
+//            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE}
+    )
+    public ResponseEntity<String> domain(@PathVariable String domain) {
+        return ResponseEntity.ok(domain);
     }
 }
