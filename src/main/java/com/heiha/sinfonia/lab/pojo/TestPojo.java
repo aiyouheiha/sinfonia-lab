@@ -15,6 +15,8 @@ import java.util.List;
 @Data
 @Builder
 public class TestPojo implements Serializable {
+    public static final String test = "test";
+    public static final long serialVersionUID = 1L;
     private transient String test1;
     private Integer test2;
     private List<String> test3;
