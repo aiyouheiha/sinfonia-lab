@@ -75,9 +75,37 @@ public class FormatUtil {
         return false;
     }
 
+    public static String getKeyCertString(File file) throws IOException {
+        try (
+                FileReader reader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                ) {
+            String line;
+            StringBuffer sb = new StringBuffer();
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line).append("\\r\\n");
+            }
+            return sb.toString();
+        }
+    }
+
+    public static String jsonKeyCert(String keyPath, String certPath) throws IOException {
+        File key = new File(keyPath);
+        File crt = new File(certPath);
+        StringBuffer sb = new StringBuffer();
+        sb.append("{\"https\": {");
+        sb.append(" \"enable\": true,");
+        sb.append("\"crt\": \"").append(getKeyCertString(crt)).append("\"").append(",");
+        sb.append("\"key\": \"").append(getKeyCertString(key)).append("\"");
+        sb.append("}}");
+
+//        // via http "+" might become " ", if this status happened, change "+" to "%2B"
+//        return sb.toString().replace("+", "%2B");
+        return sb.toString();
+
+    }
+
     public static void main(String[] args) throws IOException {
-        File file = new File("");
-        File file1 = new File("");
-        FormatUtil.format(file, file1, 10);
+
     }
 }
