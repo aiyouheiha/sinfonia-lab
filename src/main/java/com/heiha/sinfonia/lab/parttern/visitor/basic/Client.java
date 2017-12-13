@@ -1,4 +1,4 @@
-package com.heiha.sinfonia.lab.parttern.visitor;
+package com.heiha.sinfonia.lab.parttern.visitor.basic;
 
 /**
  * <br>

@@ -1,6 +1,4 @@
-package com.heiha.sinfonia.lab.parttern.visitor;
-
-import com.heiha.sinfonia.lab.parttern.visitor.Element;
+package com.heiha.sinfonia.lab.parttern.visitor.basic;
 
 /**
  * <br>
